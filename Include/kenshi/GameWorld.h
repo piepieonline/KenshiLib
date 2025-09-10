@@ -1,5 +1,7 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "util/lektor.h"
 #include "util/hand.h"
 #include "util/PerfTimer.h"
@@ -9,7 +11,6 @@
 #include "ModInfo.h"
 
 #include <ogre/OgreMemoryAllocatedObject.h>
-#include <boost/unordered_set.hpp>
 
 #include <list>
 
@@ -110,7 +111,7 @@ namespace Kenshi
         lektor<ModInfo> baseMods; // 0x4F8 Member
         lektor<std::string > baseModsNames; // 0x510 Member
         lektor<ModInfo*> activeMods; // 0x528 Member
-        std::map<std::string, ModInfo, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, ModInfo>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > availableModsByName; // 0x540 Member
+		std_shim::map<std::string, ModInfo, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, ModInfo>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > availableModsByName; // 0x540 Member
         lektor<ModInfo*> availabelModsOrderedList; // 0x568 Member
         void initBaseMods();// RVA = 0x6B9FE0
         void initModsList();// RVA = 0x6BEC60

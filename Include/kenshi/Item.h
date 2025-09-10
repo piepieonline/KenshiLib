@@ -319,7 +319,7 @@ namespace Kenshi
 		// no_addr public void Armour(const class Armour &);
 		Armour(GameData*, GameData*, hand, Faction*, int);// RVA = 0x6E3030
 		virtual ~Armour();// RVA = 0x6EC6E0// vtable offset = 0x0
-		boost::unordered::unordered_map<GameData*, float, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bodypartCoverage; // 0x2A8 Member
+		char bodypartCoverage[0x40]; // boost::unordered::unordered_map<GameData*, float, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bodypartCoverage; // 0x2A8 Member
 		float craftTime; // 0x2E8 Member
 		// no_addr public class Armour & operator=(const class Armour &);
 		// no_addr protected virtual void * __vecDelDtor(unsigned int);// vtable offset = 0x0
@@ -363,7 +363,7 @@ namespace Kenshi
 			// no_addr public class RaceLimiter::Limiter & operator=(const class RaceLimiter::Limiter &);
 			// no_addr public void * __vecDelDtor(unsigned int);
 		};
-		boost::unordered::unordered_map<GameData*, RaceLimiter::Limiter, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, RaceLimiter::Limiter>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > limits; // 0x8 Member
+		char limits[0x40]; // boost::unordered::unordered_map<GameData*, RaceLimiter::Limiter, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, RaceLimiter::Limiter>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > limits; // 0x8 Member
 		static RaceLimiter* getSingleton();// RVA = 0x46DA80
 		void addLimit(GameData*);// RVA = 0x5E56C0
 		virtual bool canEquip(GameData*, RootObject*);// RVA = 0x5DFC90// vtable offset = 0x0
@@ -405,7 +405,7 @@ namespace Kenshi
 		float combatSpeedMult; // 0x240 Member
 		int combatSkillBonus; // 0x244 Member
 		float stealthMult; // 0x248 Member
-		boost::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > racesExclude; // 0x250 Member
+		char racesExclude[0x40]; // boost::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > racesExclude; // 0x250 Member
 		// no_addr public void ContainerItem(const class ContainerItem &);
 		ContainerItem(GameData*, GameData*, hand);// RVA = 0x5E5D80
 		Inventory* inventory; // 0x290 Member

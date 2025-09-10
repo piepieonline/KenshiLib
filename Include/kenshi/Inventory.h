@@ -1,11 +1,10 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "Enums.h"
 #include "util/lektor.h"
 #include "util/Array2d.h"
-
-#include <boost/unordered_set.hpp>
-#include <boost/unordered_map.hpp>
 
 namespace Kenshi
 {
@@ -134,7 +133,7 @@ namespace Kenshi
         void getAllSectionsOfType(lektor<InventorySection*>&, AttachSlot);// RVA = 0x5CD380
         lektor<InventorySection*>& getAllSections();// RVA = 0x93C20
         bool getExcessLoot(const hand&, lektor<Item*>&, bool);// RVA = 0x5CF7A0
-        void getResourceItems(boost::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&, bool);// RVA = 0x5CFEF0
+        void getResourceItems(boost_shim::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >&, bool);// RVA = 0x5CFEF0
         int getNumItems(GameData*);// RVA = 0x5CCCA0
         int getNumItems();// RVA = 0x5CDF00
         Character* getCallbackCharacter();// RVA = 0x59E4C0
@@ -208,7 +207,7 @@ namespace Kenshi
         virtual void _addToList(Item*);// RVA = 0x5CD620// vtable offset = 0x60
         virtual void _removeFromList(Item*, bool);// RVA = 0x5CCD20// vtable offset = 0x68
         lektor<Item*> _allItems; // 0x10 Member
-        boost::unordered::unordered_map<std::string, InventorySection*, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySection*>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > sections; // 0x28 Member
+        boost_shim::unordered::unordered_map<std::string, InventorySection*, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySection*>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > sections; // 0x28 Member
         lektor<InventorySection*> sectionsInSearchOrder; // 0x68 Member
         RootObject* callbackObject; // 0x80 Member
         RootObject* owner; // 0x88 Member

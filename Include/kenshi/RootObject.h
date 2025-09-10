@@ -1,5 +1,7 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "util/hand.h"
 #include "util/lektor.h"
 #include "GameData.h"
@@ -71,7 +73,7 @@ namespace Kenshi
         Ogre::Vector3 pos; // 0x20 Member
         Ogre::Quaternion rot; // 0x2C Member
         std::string instanceID; // 0x40 Member
-        boost::unordered::unordered_map<itemType, GameData*, boost::hash<itemType>, std::equal_to<itemType>, Ogre::STLAllocator<std::pair<itemType const, GameData*>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > states; // 0x68 Member
+        boost_shim::unordered::unordered_map<itemType, GameData*, boost::hash<itemType>, std::equal_to<itemType>, Ogre::STLAllocator<std::pair<itemType const, GameData*>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > states; // 0x68 Member
         ~GameSaveState();// RVA = 0x945E0
         // no_addr public void * __vecDelDtor(unsigned int);
     };
@@ -123,7 +125,7 @@ namespace Kenshi
     class ZoneMap;
     class RaceData;
     class Inventory;
-    class RootObject : RootObjectBase
+    class RootObject : public RootObjectBase
     {
         // RootObjectBase offset = 0x0, length = 0x78
         // no_addr public void RootObject(const class RootObject &);

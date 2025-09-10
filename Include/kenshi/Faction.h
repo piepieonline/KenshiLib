@@ -1,5 +1,7 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "TimeOfDay.h"
 #include "util/lektor.h"
 #include "util/hand.h"
@@ -348,7 +350,7 @@ namespace Kenshi
         // no_addr public int getStateVar(class Faction *, const class std::basic_string<char,std::char_traits<char>,std::allocator<char> > &);
         bool checkStateCondition(DialogConditionEnum, ComparisonEnum, int, Faction*);// RVA = 0x520FF0
         // TODO map
-        boost::unordered::unordered_map<Faction*, FactionRelations::RelationData, boost::hash<Faction*>, std::equal_to<Faction*>, Ogre::STLAllocator<std::pair<Faction* const, FactionRelations::RelationData>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > _factionRelations; // 0x20 Member
+        boost_shim::unordered::unordered_map<Faction*, FactionRelations::RelationData, boost::hash<Faction*>, std::equal_to<Faction*>, Ogre::STLAllocator<std::pair<Faction* const, FactionRelations::RelationData>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > _factionRelations; // 0x20 Member
         float defaultFactionRelation; // 0x60 Member
         ~FactionRelations();// RVA = 0x672C00
         // no_addr public class FactionRelations & operator=(const class FactionRelations &);
@@ -532,7 +534,7 @@ namespace Kenshi
             BuildingSwaps();// RVA = 0x65AFA0
             bool hasReplacement(GameData*);// RVA = 0x65A3C0
             GameData* getReplacement(GameData*);// RVA = 0x659BA0
-            boost::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > toReplace; // 0x0 Member
+            boost_shim::unordered::unordered_set<GameData*, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<GameData*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > toReplace; // 0x0 Member
             FitnessSelector<GameData*> replaceWith; // 0x40 Member
             ~BuildingSwaps();// RVA = 0x6711B0
             BuildingSwaps& operator=(const BuildingSwaps&);// RVA = 0x671BC0

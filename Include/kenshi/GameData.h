@@ -1,5 +1,7 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include <string>
 #include <boost/unordered_map.hpp>
 #include <boost/unordered_set.hpp>
@@ -146,15 +148,15 @@ namespace Kenshi
         std::map<std::string, GameData::ObjectInstance, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, GameData::ObjectInstance>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > instances; // 0x88 Member
         int currentID; // 0xB0 Member
         int getNewID();// RVA = 0x55D440
-        boost::unordered::unordered_map<std::string, bool, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, bool>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > activeValues; // 0xB8 Member
-        boost::unordered::unordered_map<std::string, bool, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, bool>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bdata; // 0xF8 Member
-        boost::unordered::unordered_map<std::string, std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::string >, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > sdata; // 0x138 Member
-        boost::unordered::unordered_map<std::string, int, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, int>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > idata; // 0x178 Member
-        boost::unordered::unordered_map<std::string, float, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > fdata; // 0x1B8 Member
-        boost::unordered::unordered_map<std::string, std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::string >, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > filesdata; // 0x1F8 Member
-        boost::unordered::unordered_map<std::string, Ogre::Vector3, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, Ogre::Vector3>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > vecdata; // 0x238 Member
-        boost::unordered::unordered_map<std::string, Ogre::Quaternion, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, Ogre::Quaternion>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > quatdata; // 0x278 Member
-        boost::unordered::unordered_map<std::string, std::vector<GameDataReference, Ogre::STLAllocator<GameDataReference, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::vector<GameDataReference, Ogre::STLAllocator<GameDataReference, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > >, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > objectReferences; // 0x2B8 Member
+        boost_shim::unordered::unordered_map<std::string, bool, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, bool>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > activeValues; // 0xB8 Member
+        boost_shim::unordered::unordered_map<std::string, bool, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, bool>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bdata; // 0xF8 Member
+        boost_shim::unordered::unordered_map<std::string, std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::string >, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > sdata; // 0x138 Member
+        boost_shim::unordered::unordered_map<std::string, int, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, int>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > idata; // 0x178 Member
+        boost_shim::unordered::unordered_map<std::string, float, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > fdata; // 0x1B8 Member
+        boost_shim::unordered::unordered_map<std::string, std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::string >, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > filesdata; // 0x1F8 Member
+        boost_shim::unordered::unordered_map<std::string, Ogre::Vector3, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, Ogre::Vector3>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > vecdata; // 0x238 Member
+        boost_shim::unordered::unordered_map<std::string, Ogre::Quaternion, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, Ogre::Quaternion>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > quatdata; // 0x278 Member
+        boost_shim::unordered::unordered_map<std::string, std::vector<GameDataReference, Ogre::STLAllocator<GameDataReference, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > >, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::vector<GameDataReference, Ogre::STLAllocator<GameDataReference, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > >, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > objectReferences; // 0x2B8 Member
         unsigned short createdIndex; // 0x2F8 Member
         Ogre::ColourValue getColor(const std::string&);// RVA = 0x76DD0
         Ogre::Vector3 getColorVec(const std::string&);// RVA = 0x93660

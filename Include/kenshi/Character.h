@@ -1,5 +1,6 @@
 #pragma once
 
+#include "_Shims.h"
 
 #include "RootObject.h"
 #include "MedicalSystem.h"
@@ -69,7 +70,7 @@ namespace Kenshi
     class BountyManager
     {
     public:
-        boost::unordered::unordered_map<Faction*, Bounty, boost::hash<Faction*>, std::equal_to<Faction*>, Ogre::STLAllocator<std::pair<Faction* const, Bounty>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bounties; // 0x0 Member
+        boost_shim::unordered::unordered_map<Faction*, Bounty, boost::hash<Faction*>, std::equal_to<Faction*>, Ogre::STLAllocator<std::pair<Faction* const, Bounty>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > bounties; // 0x0 Member
         Character* me; // 0x40 Member
         Faction* _getBountyFaction(Faction*);// RVA = 0x6A5A10
         Faction* _getHighestBountyFaction();// RVA = 0x6A70E0
@@ -468,7 +469,7 @@ namespace Kenshi
         };
 
         void setDisguiseMessage(Character::DisguiseGUIFeedback);// RVA = 0x6B3A70
-        boost::unordered::unordered_map<Character::DisguiseGUIFeedback, float, boost::hash<Character::DisguiseGUIFeedback>, std::equal_to<Character::DisguiseGUIFeedback>, Ogre::STLAllocator<std::pair<Character::DisguiseGUIFeedback const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > disguiseGUIFeedbacks; // 0x1B0 Member
+        boost_shim::unordered::unordered_map<Character::DisguiseGUIFeedback, float, boost::hash<Character::DisguiseGUIFeedback>, std::equal_to<Character::DisguiseGUIFeedback>, Ogre::STLAllocator<std::pair<Character::DisguiseGUIFeedback const, float>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > disguiseGUIFeedbacks; // 0x1B0 Member
         class WhoSeesMe
         {
             // no_addr public void WhoSeesMe(class Character::WhoSeesMe &);
@@ -478,7 +479,7 @@ namespace Kenshi
             YesNoMaybe seeState; // 0x8 Member
             float progressOfMaybe; // 0xC Member
         };
-        boost::unordered::unordered_map<hand, Character::WhoSeesMe, boost::hash<hand>, std::equal_to<hand>, Ogre::STLAllocator<std::pair<hand const, Character::WhoSeesMe>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > whoSeesMeSneaking; // 0x1F0 Member
+        boost_shim::unordered::unordered_map<hand, Character::WhoSeesMe, boost::hash<hand>, std::equal_to<hand>, Ogre::STLAllocator<std::pair<hand const, Character::WhoSeesMe>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > whoSeesMeSneaking; // 0x1F0 Member
         class AttachedArrowManager
         {
             ~AttachedArrowManager();// RVA = 0x49ADD0
@@ -787,7 +788,7 @@ namespace Kenshi
             bool on; // 0x0 Member
             RagdollPart::Enum part; // 0x4 Member
         };
-        std::deque<Character::RagdollMsg, std::allocator<Character::RagdollMsg> > ragdollMessages; // 0x3E0 Member
+        std_shim::deque<Character::RagdollMsg, std::allocator<Character::RagdollMsg> > ragdollMessages; // 0x3E0 Member
         bool _ragdollMode(const struct Character::RagdollMsg&);// RVA = 0x4A0B30
         struct CarryMsg
         {

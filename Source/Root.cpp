@@ -1,8 +1,8 @@
 #include <stdafx.h>
 
-#include <kenshi/Root.h>
+// #include <kenshi/Root.h>
 
-
+/*
 Kenshi::RootObjectSimple* Kenshi::RootObjectSimple::Instance()
 {
     // .text:00007FF7F1006229                 mov     cs:g_rootObjectSimple, rax
@@ -19,3 +19,4 @@ Kenshi::RootObjectSimple* Kenshi::RootObjectSimple::Instance()
     static RVAPtr<RootObjectSimple*> c_inst(0x1AADEC0);
     return *c_inst;
 }
+*/

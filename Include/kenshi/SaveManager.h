@@ -1,10 +1,11 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "util/lektor.h"
 #include "Logger.h"
 
 #include <boost/thread/shared_mutex.hpp>
-#include <boost/unordered_set.hpp>
 
 #include <string>
 
@@ -87,7 +88,7 @@ namespace Kenshi
         void createCurrent();// RVA = 0x381260
         virtual unsigned long threadProc();// RVA = 0x382B40// vtable offset = 0x0
         std::map<std::string, int, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, int>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > fileSystem; // 0x88 Member
-        boost::unordered::unordered_set<std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::string, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > deletedFiles; // 0xB0 Member
+        boost_shim::unordered::unordered_set<std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::string, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > deletedFiles; // 0xB0 Member
         lektor<std::string > paths; // 0xF0 Member
         lektor<std::string > oldCurrentFolders; // 0x108 Member
         std::string currentSave; // 0x120 Member

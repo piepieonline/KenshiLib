@@ -1,13 +1,13 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "util/lektor.h"
 #include "util/hand.h"
 #include "Enums.h"
 
 #include <ogre/OgreVector2.h>
 #include <ogre/OgrePlaneBoundedVolume.h>
-#include <boost/unordered_map.hpp>
-#include <boost/unordered_set.hpp>
 
 namespace MyGUI
 {
@@ -53,9 +53,10 @@ namespace Kenshi
     // TODO move?
     class SelectionBox : Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> >
     {
+    public:
         // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x0, length = 0x1
         Ogre::Vector2 startPos; // 0x0 Member
-        Ogre::PlaneBoundedVolume volume; // 0x8 Member
+        char volume[0x28]; // TODO: Why is this wrong? // Ogre::PlaneBoundedVolume volume; // 0x8 Member
         MyGUI::Widget* widget; // 0x30 Member
         bool active; // 0x38 Member
         void start(const Ogre::Vector2&);// RVA = 0x658660
@@ -88,7 +89,7 @@ namespace Kenshi
     class Item;
     class RootObjectContainer;
 
-    class PlayerInterface : FactoryCallbackInterface, Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> >
+    class PlayerInterface // : FactoryCallbackInterface, Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> >
     {
     public:
         // FactoryCallbackInterface offset = 0x0, length = 0x8
@@ -219,9 +220,9 @@ namespace Kenshi
         bool buildingSelected(Building*, const Ogre::Vector3&, bool);// RVA = 0x6627E0
         void playerMove(const Ogre::Vector3&, Building*);// RVA = 0x660950
         bool _isPlayerCharacter(RootObject*);// RVA = 0x658540
-        boost::unordered::unordered_map<ZoneMap*, unsigned char, boost::hash<ZoneMap*>, std::equal_to<ZoneMap*>, Ogre::STLAllocator<std::pair<ZoneMap* const, unsigned char>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > zonesVisibilities; // 0x120 Member
-        boost::unordered::unordered_set<TownBase*, boost::hash<TownBase*>, std::equal_to<TownBase*>, Ogre::STLAllocator<TownBase*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > townsActive; // 0x160 Member
-        boost::unordered::unordered_set<hand, boost::hash<hand>, std::equal_to<hand>, Ogre::STLAllocator<hand, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > interiorsVisible; // 0x1A0 Member
+        boost_shim::unordered::unordered_map<ZoneMap*, unsigned char, boost::hash<ZoneMap*>, std::equal_to<ZoneMap*>, Ogre::STLAllocator<std::pair<ZoneMap* const, unsigned char>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > zonesVisibilities; // 0x120 Member
+        boost_shim::unordered::unordered_set<TownBase*, boost::hash<TownBase*>, std::equal_to<TownBase*>, Ogre::STLAllocator<TownBase*, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > townsActive; // 0x160 Member
+        boost_shim::unordered::unordered_set<hand, boost::hash<hand>, std::equal_to<hand>, Ogre::STLAllocator<hand, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > interiorsVisible; // 0x1A0 Member
         unsigned int interiorsVisibleHash; // 0x1E0 Member
         int currentFloor; // 0x1E4 Member
         TaskType currentMouseTask; // 0x1E8 Member
@@ -229,7 +230,7 @@ namespace Kenshi
         bool mouseRightTargetSet; // 0x1F0 Member
         RootObject* mouseRightTarget; // 0x1F8 Member
         float rmouseTimer; // 0x200 Member
-        boost::unordered::unordered_set<hand, boost::hash<hand>, std::equal_to<hand>, Ogre::STLAllocator<hand, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > selectedCharacters; // 0x208 Member
+        boost_shim::unordered::unordered_set<hand, boost::hash<hand>, std::equal_to<hand>, Ogre::STLAllocator<hand, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > selectedCharacters; // 0x208 Member
         hand selectedObject; // 0x248 Member
         bool onlyAnimalsSelected; // 0x268 Member
         int selectedLoadedLeft; // 0x26C Member

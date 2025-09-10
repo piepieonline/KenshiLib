@@ -1,12 +1,13 @@
 #pragma once
 
+#include "_Shims.h"
+
 #include "util/lektor.h"
 #include "Enums.h"
 #include "TimeOfDay.h"
 #include "util/StringPair.h"
 
 #include <ogre/OgreVector3.h>
-#include <boost/unordered_map.hpp>
 
 // 1.0.59 GOG MedicalSystem TakeDamage possibly @ kenshi_GOG_x64.exe+5056D0 
 // MedicalSystem::TakeDamage(HealthPartStatus* part, struct damage, uint64_t unk)
@@ -154,7 +155,7 @@ namespace Kenshi
             float healthAsPercent(float);// RVA = 0x4FC140
             float derivedFleshHealthPercent; // 0x60 Member
         };
-        boost::unordered::unordered_map<GameData*, MedicalSystem::HealthPartStatus, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, MedicalSystem::HealthPartStatus>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > status; // 0x8 Member
+        boost_shim::unordered::unordered_map<GameData*, MedicalSystem::HealthPartStatus, boost::hash<GameData*>, std::equal_to<GameData*>, Ogre::STLAllocator<std::pair<GameData* const, MedicalSystem::HealthPartStatus>, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > status; // 0x8 Member
         HealthPartStatus* getPart(RobotLimbs::Limb);// RVA = 0x50BFB0
         HealthPartStatus* getPart(unsigned __int64);// RVA = 0x20F7E0
         HealthPartStatus* getPart(MedicalSystem::HealthPartStatus::PartType, LeftRight);// RVA = 0x50EC70
