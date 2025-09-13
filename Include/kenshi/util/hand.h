@@ -23,7 +23,7 @@ namespace Kenshi
         hand(GameData* fromLoadedState, itemType typ);// RVA = 0x60DA20
         hand(RootObjectBase* from);// RVA = 0x60ABC0
         hand(int from);// RVA = 0x94660
-        hand(const hand& from);// RVA = 0x90ED0
+        hand(const hand& from) = default;// RVA = 0x90ED0
         // void __fastcall hand::hand(hand *this, unsigned int _index, unsigned int _serial, itemType _type, unsigned int _container, unsigned int _containerSerial)
         hand(unsigned int _index, unsigned int _serial, itemType _type, unsigned int _container, unsigned int _containerSerial);// RVA = 0x8D230
         hand();// RVA = 0x8D210
@@ -34,11 +34,11 @@ namespace Kenshi
         unsigned int serial; // 0x18 Member
         std::string toString();// RVA = 0x7C71A0
         void fromString(const std::string& str);// RVA = 0x7CA320
-        virtual bool operator==(bool a);// RVA = 0x8D2E0// vtable offset = 0x0
+        virtual bool operator==(bool a) = delete;// RVA = 0x8D2E0// vtable offset = 0x0
         bool operator==(const RootObjectBase* a);// RVA = 0x46DE40
-        virtual bool operator==(const hand& a);// RVA = 0x8D260// vtable offset = 0x8
+        virtual bool operator==(const hand& a) = delete;// RVA = 0x8D260// vtable offset = 0x8
         bool operator!=(const RootObjectBase* a);// RVA = 0x46DEE0
-        virtual bool operator!=(const hand& a);// RVA = 0x8D2A0// vtable offset = 0x10
+        virtual bool operator!=(const hand& a) = delete;// RVA = 0x8D2A0// vtable offset = 0x10
         //bool operator bool();// RVA = 0x3BDE0
         Character* getCharacter();// RVA = 0x610690
         Platoon* getPlatoon();// RVA = 0x60AE90

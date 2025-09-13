@@ -398,14 +398,14 @@ namespace Kenshi
         void addOwnedObject(const hand&);// RVA = 0x653FB0
         void removeOwnedObject(const hand&);// RVA = 0x6535A0
         bool isOwned(const hand&);// RVA = 0x6536A0
-        virtual bool takeMoney(int);// RVA = 0x638E70// vtable offset = 0x0
-        virtual void takeMoneyByForce(int);// RVA = 0x638E60// vtable offset = 0x8
+        virtual bool takeMoney(int) = delete;// RVA = 0x638E70// vtable offset = 0x0
+        virtual void takeMoneyByForce(int) = delete;// RVA = 0x638E60// vtable offset = 0x8
         int getMoney();// RVA = 0x2BAAC0
         void addMoney(int);// RVA = 0x27A1C0
         void setMoney(int);// RVA = 0x2BAAD0
         void setHomeBuildingDesignation(BuildingDesignation);// RVA = 0x60AB70
         void copyFrom(Ownerships*);// RVA = 0x633960
-        std::set<hand, std::less<hand>, Ogre::STLAllocator<hand, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > slaves; // 0x8 Member
+        std_shim::set<hand, std::less<hand>, Ogre::STLAllocator<hand, Ogre::CategorisedAllocPolicy<Ogre::MEMCATEGORY_GENERAL> > > slaves; // 0x8 Member
         void serialise(GameData*);// RVA = 0x4E3170
         void load(GameData*, SquadType);// RVA = 0x4E3690
         TownBase* _homeTown; // 0x30 Member
@@ -427,7 +427,7 @@ namespace Kenshi
         Platoon* me; // 0x78 Member
         TownBase* occupiedTown; // 0x80 Member
         int money; // 0x88 Member
-        ~Ownerships();// RVA = 0x6381C0
+        ~Ownerships() = default;// RVA = 0x6381C0
         // no_addr public class Ownerships & operator=(const class Ownerships &);
         // no_addr public void * __vecDelDtor(unsigned int);
     };

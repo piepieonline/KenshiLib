@@ -30,6 +30,18 @@ namespace std_shim {
 		T& operator[](const Key&) { static T dummy; return dummy; }
 	};
 
+		template <
+		typename Key,
+		typename T,
+		typename Compare = std::less<Key>,
+		typename Allocator = std::allocator<std::pair<const Key, T>>
+	>
+	class alignas(8) set {
+	public:
+		// Reserve the same size as std::map on typical x64 implementations (0x28 bytes)
+		// You can adjust this if needed based on platform or compiler
+		char _data[0x28];
+	};
 
 	template <
 		typename T,
@@ -55,7 +67,7 @@ namespace std_shim {
 		deque() noexcept {}
 		~deque() {}
 
-		// Deleted to avoid accidental use — this is just a stand-in
+		// Deleted to avoid accidental use ï¿½ this is just a stand-in
 		deque(const deque&) = delete;
 		deque& operator=(const deque&) = delete;
 	};
