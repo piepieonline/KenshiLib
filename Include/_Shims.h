@@ -30,7 +30,7 @@ namespace std_shim {
 		T& operator[](const Key&) { static T dummy; return dummy; }
 	};
 
-		template <
+	template <
 		typename Key,
 		typename T,
 		typename Compare = std::less<Key>,
@@ -41,6 +41,45 @@ namespace std_shim {
 		// Reserve the same size as std::map on typical x64 implementations (0x28 bytes)
 		// You can adjust this if needed based on platform or compiler
 		char _data[0x28];
+	};
+
+	template <typename T>
+	class alignas(8) vector {
+	public:
+		// Reserve the same size as std::vector<T> on most 64-bit MSVC/libstdc++/libc++ impls (0x28 bytes)
+		// Adjust this if your platform differs
+		char _data[0x28];
+
+		// Types to mimic std::vector<T>
+		using value_type = T;
+		using size_type = std::size_t;
+		using difference_type = std::ptrdiff_t;
+		using reference = value_type&;
+		using const_reference = const value_type&;
+		using pointer = value_type*;
+		using const_pointer = const value_type*;
+
+		// Iterator shims (just pointers, no backing storage)
+		using iterator = value_type*;
+		using const_iterator = const value_type*;
+
+		// Fake ctor/dtor so it's usable in structs
+		constexpr vector() noexcept = default;
+		constexpr vector(const vector&) noexcept = default;
+		constexpr vector& operator=(const vector&) noexcept = default;
+		~vector() = default;
+
+		// Stub methods for compatibility
+		iterator begin() noexcept { return nullptr; }
+		const_iterator begin() const noexcept { return nullptr; }
+		const_iterator cbegin() const noexcept { return nullptr; }
+
+		iterator end() noexcept { return nullptr; }
+		const_iterator end() const noexcept { return nullptr; }
+		const_iterator cend() const noexcept { return nullptr; }
+
+		size_type size() const noexcept { return 0; }
+		bool empty() const noexcept { return true; }
 	};
 
 	template <

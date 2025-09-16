@@ -381,7 +381,7 @@ namespace MyGUI
 
 		void addWidget(Widget* _widget);
 
-	private:
+	public:
 		// клиентская зона окна
 		// если виджет имеет пользовательские окна не в себе
 		// то обязательно проинициализировать Client

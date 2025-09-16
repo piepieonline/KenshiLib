@@ -1,9 +1,35 @@
 #pragma once
 
+#include <cstdint>
+#include <MyGUI_Widget.h>
 #include "kenshi/Character.h";
 
 namespace Kenshi
 {
+	namespace wraps
+	{
+		class BaseLayout
+		{
+			public:
+				BaseLayout();
+				virtual void test();
+
+				MyGUI::Widget* widget;
+				// std::string prefix;
+				char* prefix[16];
+		};
+	};
+
+	class InventoryIcon : public wraps::BaseLayout
+	{
+
+	};
+
+	class GUIWindow
+	{
+
+	};
+
 	class ActivePlatoon_PlatoonMembers_DataPtr
 	{
 	public:
