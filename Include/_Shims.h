@@ -4,6 +4,8 @@
 #include <utility>
 #include <boost/container_hash/hash_fwd.hpp>
 
+#include "c_wrapper/wrapper_std.h"
+
 namespace std_shim {
 
 	template <

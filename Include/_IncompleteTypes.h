@@ -1,17 +1,39 @@
 #pragma once
 
 #include <cstdint>
+
+#include <ogre/RenderSystems/Direct3D11/OgreD3D11RenderWindow.h>
+#include <ois/OIS.h>
 #include <MyGUI_Widget.h>
+
 #include "kenshi/Character.h";
+
 
 namespace Kenshi
 {
+	class MainListener
+	{
+	public:
+		char pad_0000[104]; //0x0000
+		class OIS::InputManager *inputManager; //0x0068
+		char pad_0070[8]; //0x0070
+		class OIS::Mouse *mouse; //0x0078
+		class OIS::Keyboard *keyboard; //0x0080
+	};
+
+	class RendererT
+	{
+	public:
+		char pad_0000[120]; //0x0000
+		class Ogre::D3D11RenderWindowBase *windowHwnd; //0x0078
+		class MainListener *mainListener; //0x0080
+	};
+
 	namespace wraps
 	{
 		class BaseLayout
 		{
 			public:
-				BaseLayout();
 				virtual void test();
 
 				MyGUI::Widget* widget;
@@ -22,6 +44,9 @@ namespace Kenshi
 
 	class InventoryIcon : public wraps::BaseLayout
 	{
+	public:
+		char pad_0098[16]; //0x0098
+		class Item* inventoryItem; //0x00A0
 
 	};
 

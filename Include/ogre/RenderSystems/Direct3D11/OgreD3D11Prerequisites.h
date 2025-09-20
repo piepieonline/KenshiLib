@@ -31,7 +31,6 @@ THE SOFTWARE.
 
 
 #include "OgrePrerequisites.h"
-#include "WIN32/OgreMinGWSupport.h" // extra defines for MinGW to deal with DX SDK
 
 #if OGRE_THREAD_SUPPORT
 #define OGRE_LOCK_RECURSIVE_MUTEX(name)   name.lock();

@@ -113,7 +113,7 @@ namespace Kenshi
         // no_addr public bool operator!=(const class hand &);
         Faction* owner; // 0x10 Member
         virtual void setFaction(Faction*, ActivePlatoon*);// RVA = 0x46EE10// vtable offset = 0xA0
-        std::string displayName; // 0x18 Member
+        Wrappers::String_Wrap displayName; // 0x18 Member
         GameData* data; // 0x40 Member
         Ogre::Vector3 pos; // 0x48 Member
         hand handle; // 0x58 Member
